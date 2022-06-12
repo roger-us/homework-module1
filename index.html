@@ -71,90 +71,11 @@
             </div>
         </footer>
         </div> <!--End of the container-->  
-    <!--JavaScript Codes-->
-    <script>
-        //Create a time data function
-        function currentTime() {
-            //declare variables
-            var d = new Date(); //Get current date
-            var hr = d.getHours(); //Get current hours
-            var min = d.getMinutes(); //Get current minutes
-            var sec = d.getSeconds(); //Get current seconds 
-            var ampm; //Declare empty variable to store AM or PM
+        
+        <!--JavaScript Clock Code-->
+        <script src="js/digclock.js"></script>
 
-            //Add 0 to single digits for seconds
-            if (sec < 10) {
-                sec = "0" + sec;
-            }
-            //Add 0 to single digits for minutes
-            if (min < 10) {
-                min = "0" + min;
-            }
-
-            //Determine AM or PM string
-            if (hr == 12) {
-                ampm = "PM"; //Set to PM
-            } else if (hr > 12) {
-                hr -= 12; //Detuct 12 from hours great than 12 (military time)
-                ampm = "PM"; //Set to PM
-            } else {
-                ampm = "AM"; //Set to AM
-            }
-            var utchr = d.getUTCHours(); //Get current Greenwich Mean Time (GMT)
-            
-            if (utchr > 12) {
-                utchr -= 12;
-            }
-
-            var timeDiff = utchr - hr; //To store time difference between GMT hour and local hour
-            var adjTimeDiff; //To store time difference converted to positive number
-
-            if (timeDiff < 0) {
-                adjTimeDiff = timeDiff + 12;
-            } else {
-                adjTimeDiff = timeDiff;
-            }
-
-            var timeZone; //To store the 4 time zone (PT,MT,CT,ET)
-            if (adjTimeDiff == 4) {
-                timeZone = " ET";
-            } else if (adjTimeDiff == 5) {
-                timeZone = " CT";
-            } else if (adjTimeDiff == 6) {
-                timeZone = " MT";
-            } else if (adjTimeDiff == 7) {
-                timeZone = " PT";
-            }
-
-            //Assemble time format to display
-            var time = hr + ":" + min + ":" + sec + " " + ampm + " " + timeZone;
-            //Display current local time and time zone on HTML elements
-            document.getElementById("clock").innerText = time;
-            setInterval(currentTime, 1000);
-        }
-            //Initial run of time data function
-            currentTime();
-
-        var partnerImg = []; //empty array to store image element
-        var partnerNames = []; //empty array to store images filenames
-        var partnerList = []; //Empty array to store html list that conatain an image
-        var img = []; //empty variable to store assembled image list codes
-        var openList = '<li class="partner">'; //Store the open list tag
-        var closeList = "</li>"; //store the close list tag
-        var photos = [];
-
-        //create a logo to create 6 images starting with index of 0
-        //<li class="partner"><img src="images/partners/partner-bustour.png" alt="Partner Bus Tours"></li>
-
-        for (var i=0; i<6; i++){
-            partnerNames.push("partner"+(i+1));
-            photos.push('<img src="images/partners/'+partnerNames[i]+'.png">');
-            img = openList + photos[i] + closeList;
-            partnerList.push(img);
-        }
-        //Display all six images codes, stored images in the array
-        document.getElementById("partners").innerHTML = partnerList.join("");
-
-    </script>
+        <!--JavaScript Partners Code-->
+        <script src="js/site_scripts.js"></script>
     </body>
 </html>
